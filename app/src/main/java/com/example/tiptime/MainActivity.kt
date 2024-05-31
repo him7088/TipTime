@@ -83,7 +83,7 @@ fun EditNumberField(
 
 @Composable
 fun TipTimeLayout() {
-    var amountInput by remember { mutableStateOf("0") }
+    var amountInput by remember { mutableStateOf("") }
     var tipInput by remember { mutableStateOf("") }
     var roundUp by remember { mutableStateOf(false)}
     val amount =amountInput.toDoubleOrNull() ?: 0.00
