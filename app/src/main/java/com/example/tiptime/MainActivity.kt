@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.tiptime.ui.theme.TipTimeTheme
 import java.text.NumberFormat
 
@@ -75,22 +78,32 @@ fun TipTimeLayout() {
             .statusBarsPadding()
             .verticalScroll(rememberScrollState())
             .safeDrawingPadding()
+
+
         ,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Spacer(modifier = Modifier.height(150.dp))
         Text(
             text = stringResource(id = R.string.calculate_tip),
             modifier = Modifier
                 .padding(bottom = 16.dp, top = 40.dp)
-                .align(alignment = Alignment.Start)
+                .align(alignment = Alignment.Start),
+            fontSize = 24.sp
         )
-        EditNumberField(value = amountInput, onValueChange ={amountInput = it} , modifier = Modifier )
+        EditNumberField(value = amountInput,
+            onValueChange ={amountInput = it} ,
+            modifier = Modifier
+                .padding(5.dp)
+                .fillMaxWidth()
+        )
 
         Text(
             text = stringResource(R.string.tip_amount,tip),
-            style = MaterialTheme.typography.displaySmall)
-        Spacer(modifier = Modifier.height(150.dp))
+            style = MaterialTheme.typography.displaySmall,
+            modifier = Modifier.padding(5.dp))
+
     }
 }
 
